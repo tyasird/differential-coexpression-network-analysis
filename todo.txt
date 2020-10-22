@@ -1,0 +1,36 @@
+icon yapilacak.
+notify import edilecek.
+loading
+sayfalar arasinda logo dengesizligine bakilacak
+bu iyi bir modul veya normal bir modul diye yazmak
+
+json serialize olanlar neden slash ile birlikte veritabanina kayit oluyor?
+co-expression input dosyasının 1. satırına baksın eğer numeric değilse onu es geçsin.
+cytoscape için en başta ping at eğer 3 saniye içinde response vermiyorsa hata verdir
+
+
+# DATABASE
+
+
+- Network
+    diff_coexp_id
+    type (disease or healthy)
+    mcode
+
+
+- DiffCoExpression
+    cancer_id
+    input_excel
+    healthy_sample
+    disease_sample  
+    pcritic_max
+    pcritic_min
+    healthy_normality_pvalue
+    disease_normality_pvalue
+    healthy_result
+    disease_result 
+    healthy_diff_co_expression 
+    disease_diff_co_expression 
+
+
+

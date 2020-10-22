@@ -1,0 +1,296 @@
+{% load static %}
+{% include 'header.html' %}
+{% load humanize %}
+
+
+<main class="main-content">
+    <!------main-content------>
+    <!-----------page_title--------------->
+    <section class="page_title small pdt_80  pdb_40">
+        <div class="container">
+            <div class="row">
+                <!---------row----------->
+                <div class="col-lg-12 col-md-12 text-center">
+                    <!---------col----------->
+                    <div class="content_box">
+
+                    </div>
+                    <!---------col-end---------->
+                </div>
+                <!----------row-end---------->
+            </div>
+        </div>
+    </section>
+    <!-----------page_title-end-------------->
+
+
+    <!-----------handwash--------------->
+    <section class="handwash type_two pdt_50  ">
+        <div class="container">
+
+
+            <div class="row">
+                <!---------row----------->
+                <div class="col-lg-12 col-md-12">
+                    <!---------col----------->
+                    <div class="heading text-center tp_one">
+                        <h2> Differential Co-Expression Network Results</h2>
+                    </div>
+                    <!---------col-end---------->
+                </div>
+                <!----------row-end---------->
+            </div>
+
+
+        </div>
+    </section>
+    <!-----------handwash-end-------------->
+
+
+    <!-----------symptoms-checker--------------->
+    <section class="symptoms_checker    pdb_40">
+        <div class="container">
+            <div class="row">
+                <!---------row----------->
+                <div class="col-lg-12 col-md-12">
+                    <!---------col----------->
+                    <div class="contnet_box">
+
+
+                        <!--
+
+
+
+                                             <div class="alert" role="alert">
+                                                <span class="linearicons-warning"></span>
+                                                <div class="text">
+                                                   <h2>Info</h2>
+                                                   <p>Click Result Links to Create Differential Co-Expression Networks.
+                                                   </p>
+                                                </div>
+                                             </div>
+
+                                           -->
+
+
+                        <div class="symptoms_result_box">
+                            <div class="upper_box">
+                                <div class="row">
+                                    <div class="col-lg-3">
+                                        <div class="result_heading">
+                                            <h2>Result Type</h2>
+                                            <h4 class="text-danger"> {% if network.type == 0 %} Disease {% else %}
+                                                Healthy {% endif %} </h4>
+
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-9">
+                                        <div class="patient_details">
+                                            <h2>Your details</h2>
+                                            <ul>
+
+
+                                                <li> Disease:
+                                                    <span>{{ cancer_ids|get_item:diff_coexp.cancer_id }}</span>
+                                                </li>
+                                                <li> Healthy Sample: <span>{{ diff_coexp.healthy_sample }}</span></li>
+                                                <li>Disease Sample: <span>{{ diff_coexp.disease_sample }}</span></li>
+                                                <br/>
+
+                                                <li> Healthy
+                                                    Pcritic:<span> {{ diff_coexp.disease_pcritic|format_pvalue }}</span>
+                                                </li>
+                                                <li> Disease
+                                                    Pcritic:<span> {{ diff_coexp.healthy_pcritic|format_pvalue }}</span>
+                                                </li>
+                                                <br/>
+
+                                                <li> Healthy Normality
+                                                    Pvalue:<span> {{ diff_coexp.healthy_normality_pvalue|format_pvalue }}</span>
+                                                </li>
+                                                <li> Disease Normality
+                                                    Pvalue:<span> {{ diff_coexp.disease_normality_pvalue|format_pvalue }}</span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="lower_box">
+
+
+                                <div class="row">
+
+                                    <!--
+                                       <div class="col-lg-12">
+                                      <div class="dashed_bg_one"></div>
+                                    </div>
+                                    -->
+
+
+                                    {% for cluster in clusters %}
+
+                                        <!---------row----------->
+                                        <div class="col-lg-4 col-md-6 col-sm-12">
+                                            <div class="handwash_box type_two  border border-info rounded p-3"
+                                                 data-wow-delay="100ms"
+                                                 data-wow-duration="1500ms">
+                                                <div class="image_box">
+                                                    <a href="#modal-{{ cluster.id|add:"1" }}" data-toggle="modal"
+                                                       data-target="#modal-{{ cluster.id|add:"1" }}">
+                                                        <img src="/uploads/cytoscape/network/{{ cluster.hash }}.png"
+                                                             class="img-fluid" alt="img"/>
+                                                    </a>
+                                                    <small>{{ cluster.id|add:"1" }}</small>
+                                                </div>
+                                                <div class="content_box">
+                                                    <h2><a href="#modal-{{ cluster.id|add:"1" }}" data-toggle="modal"
+                                                           data-target="#modal-{{ cluster.id|add:"1" }}">Cluster {{ cluster.id|add:"1" }}</a>
+                                                    </h2>
+                                                    <h6><span class="text-primary">Node:</span> <span
+                                                            class="text-danger">{{ cluster.node }} </span>
+                                                        - <span class="text-primary">Edge:</span> <span
+                                                                class="text-danger">{{ cluster.edge }} </span></h6>
+                                                    <h6><span class="text-primary">Network Density: </span> <span
+                                                            class="text-danger">% {{ cluster.node|find_network_density:cluster.edge }}</span>
+                                                    </h6>
+                                                    <h6><span class="text-primary">mCode Score:</span> <span
+                                                            class="text-danger">{{ cluster.score|floatformat:2|intcomma }}</span>
+                                                    </h6>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!---------row----------->
+
+                                    {% endfor %}
+
+
+                                </div>
+
+
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <!---------col-end---------->
+                </div>
+                <!----------row-end---------->
+            </div>
+        </div>
+    </section>
+    <!-----------symptoms-checker-end-------------->
+
+
+
+    {% for cluster in clusters %}
+
+        <!-- Modal -->
+        <div class="modal fade" id="modal-{{ cluster.id|add:"1" }}" tabindex="-1" role="dialog"
+             aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle">Cluster Details</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+
+                    <div class="modal-body">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-md-6 text-center">
+
+                                    <img src="/uploads/cytoscape/network/{{ cluster.hash }}.png" class="img-fluid">
+                                </div>
+
+                                <div class="col-md-2">
+                                    <div class="gene_list overflow-auto">
+
+                                        <ul class="list-group list-group-flush">
+                                            <li class="list-group-item list-group-item-warning">Differential Co-Exp.
+                                                <span
+                                                        class="badge badge-primary"
+                                                        style="font-size: 13px">{{ cluster.table.gene|length }}</span>
+                                            </li>
+
+                                            {% for key, value in cluster.table.gene.items %}
+                                                <li class="list-group-item">{{ value }}</li>
+                                            {% endfor %}
+
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-2">
+                                    <div class="gene_list overflow-auto">
+
+                                        <ul class="list-group list-group-flush">
+                                            <li class="list-group-item list-group-item-warning">Healthy Interactions
+                                                <span
+                                                        class="badge badge-primary"
+                                                        style="font-size: 13px">{{ diff_coexp.healthy_diff_co_expression|find_interactions:cluster|length }}</span>
+                                                {% if network.type == 0 %}
+                                                    <span class="badge badge-dark"
+                                                          style="font-size: 13px">Important </span>
+                                                {% endif %}
+                                                </span>
+
+                                            </li>
+
+
+
+                                            {% for value in diff_coexp.healthy_diff_co_expression|find_interactions:cluster %}
+                                                <li class="list-group-item">{{ value }}</li>
+                                            {% endfor %}
+
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="gene_list overflow-auto">
+
+                                        <ul class="list-group list-group-flush">
+                                            <li class="list-group-item list-group-item-warning">Disease
+                                                Interactions<span
+                                                        class="badge badge-primary"
+                                                        style="font-size: 13px">{{ diff_coexp.disease_diff_co_expression|find_interactions:cluster|length }}
+                                                </span>
+                                                {% if network.type == 1 %}
+                                                    <span class="badge badge-dark"
+                                                          style="font-size: 13px">Important </span>
+                                                {% endif %}
+
+
+                                            </li>
+
+
+
+                                            {% for value in diff_coexp.disease_diff_co_expression|find_interactions:cluster %}
+                                                <li class="list-group-item">{{ value }}</li>
+                                            {% endfor %}
+
+
+                                        </ul>
+                                    </div>
+                                </div>
+
+
+                            </div>
+
+                        </div>
+                    </div>
+
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    {% endfor %}
+
+
+{% include 'footer.html' %}

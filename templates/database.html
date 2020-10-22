@@ -1,0 +1,851 @@
+{% load static %}
+{% include 'header.html' %}
+
+
+         <main class="main-content">
+            <!------main-content------>
+            <!-----------page_title--------------->
+            <section class="page_title small  pdt_80  pdb_40">
+               <div class="container">
+                  <div class="row">
+                     <!---------row----------->
+                     <div class="col-lg-12 col-md-12 text-center">
+                        <!---------col----------->
+                        <div class="content_box">
+                    
+                        </div>
+                        <!---------col-end---------->
+                     </div>
+                     <!----------row-end---------->
+                  </div>
+               </div>
+            </section>
+            <!-----------page_title-end-------------->
+            <!-----------counter--------------->
+            <section class="counter type_two">
+               <div class="container">
+                  <div class="counter_outer_box style_two">
+                     <div class="row">
+                        <!---------row----------->
+                        <div class="col-lg-4 col-md-12">
+                           <!---------col----------->
+                           <div class="heading tp_one">
+                              <h6>Database</h6>
+                              <h1>Analyze Statistics</h1>
+                              <p>Last updated: March 27, 2020, 14:49 GMT</p>
+                           </div>
+                           <!---------col-end---------->
+                        </div>
+                        <div class="col-lg-8 col-md-12 d-flex">
+                           <!---------col----------->
+                           <div class="counter_box_outer">
+                              <div class="counter_box type_two one">
+                                 <div class="image_box">
+ <i class="fas fa-arrow-up fa-4x"></i>
+                                 </div>
+                                 <div class="text_box">
+                                    <h2><span class="odometer " data-count="558357"></span></h2>
+                                    <h6>Network</h6>
+                                 </div>
+                              </div>
+                              <div class="counter_box type_two two">
+                                 <div class="image_box">
+ <i class="fas fa-arrow-up fa-4x"></i>
+                                 </div>
+                                 <div class="text_box">
+                                    <h2><span class="odometer " data-count="25262"></span></h2>
+                                    <h6>Clusters</h6>
+                                 </div>
+                              </div>
+                              <div class="counter_box type_two three">
+                                 <div class="image_box">
+ <i class="fas fa-arrow-up fa-4x"></i>
+                                 </div>
+                                 <div class="text_box">
+                                    <h2><span class="odometer " data-count="128718"></span></h2>
+                                    <h6>Analysis</h6>
+                                 </div>
+                              </div>
+                           </div>
+                           <!---------col-end---------->
+                        </div>
+                        <!----------row-end---------->
+                     </div>
+                  </div>
+               </div>
+            </section>
+            <!-----------counter-end-------------->
+
+
+<br />
+<br />
+
+
+            <!-----------overall_deatils table--------------->
+            <section class="overall_deatils type_one   pdb_70">
+               <div class="container">
+                  <div class="row">
+                     <!---------row----------->
+                     <div class="col-lg-12 col-md-12">
+                        <!---------col----------->
+                        <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                           <li class="nav-item">
+                              <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Now                </a>
+                           </li>
+                           <li class="nav-item">
+                              <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Yesterday</a>
+                           </li>
+                           <li class="nav-item">
+                              <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false">Last 10 days</a>
+                           </li>
+                        </ul>
+                        <div class="tab-content" id="pills-tabContent">
+                           <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+                              <div class="table-responsive">
+                                 <table id="outbreaks" class="table  table-striped table-bordered" style="width:100%">
+                                    <thead>
+                                       <tr>
+                                          <th>Country,<br> Other</th>
+                                          <th>Total<br>Cases</th>
+                                          <th>New<br>Cases</th>
+                                          <th>Total<br> Deaths</th>
+                                          <th>New<br>Deaths</th>
+                                          <th>Total<br>Recoveres</th>
+                                          <th>Active<br>Cases</th>
+                                          <th>Serious,<br>Critical</th>
+                                          <th>Cases<br>/1M pop</th>
+                                          <th>Deaths<br> /1M pop</th>
+                                          <th>Reported<br>1st case</th>
+                                       </tr>
+                                    </thead>
+                                    <tbody>
+                                       <tr class="total_row_world odd" role="row">
+                                          <td>World</td>
+                                          <td>781,979</td>
+                                          <td>+58,589</td>
+                                          <td>37,606</td>
+                                          <td>+3,541</td>
+                                          <td>164,753</td>
+                                          <td>579,620</td>
+                                          <td>29,590</td>
+                                          <td>100.3</td>
+                                          <td>4.8</td>
+                                          <td>Jan 10</td>
+                                       </tr>
+                                       <tr>
+                                          <td>USA</td>
+                                          <td>161,647</td>
+                                          <td>+18,156</td>
+                                          <td>2,998</td>
+                                          <td>+415</td>
+                                          <td>5,254</td>
+                                          <td>153,395</td>
+                                          <td>3,512</td>
+                                          <td>488</td>
+                                          <td>9</td>
+                                          <td>Jan 20</td>
+                                       </tr>
+                                       <tr>
+                                          <td>Spain</td>
+                                          <td>101,739</td>
+                                          <td>+4,050</td>
+                                          <td>11,591</td>
+                                          <td>+812</td>
+                                          <td>14,620</td>
+                                          <td>75,528</td>
+                                          <td>3,981</td>
+                                          <td>1,683	</td>
+                                          <td>192</td>
+                                          <td>Jan 29</td>
+                                       </tr>
+                                       <tr>
+                                          <td>China</td>
+                                          <td>101,739</td>
+                                          <td>+4,050</td>
+                                          <td>11,591</td>
+                                          <td>+812</td>
+                                          <td>14,620</td>
+                                          <td>75,528</td>
+                                          <td>3,981</td>
+                                          <td>1,683	</td>
+                                          <td>192</td>
+                                          <td>Jan 29</td>
+                                       </tr>
+                                       <tr>
+                                          <td>Germany</td>
+                                          <td>101,739</td>
+                                          <td>+4,050</td>
+                                          <td>11,591</td>
+                                          <td>+812</td>
+                                          <td>14,620</td>
+                                          <td>75,528</td>
+                                          <td>3,981</td>
+                                          <td>1,683	</td>
+                                          <td>192</td>
+                                          <td>Jan 29</td>
+                                       </tr>
+                                       <tr>
+                                          <td>France</td>
+                                          <td>101,739</td>
+                                          <td>+4,050</td>
+                                          <td>11,591</td>
+                                          <td>+812</td>
+                                          <td>14,620</td>
+                                          <td>75,528</td>
+                                          <td>3,981</td>
+                                          <td>1,683	</td>
+                                          <td>192</td>
+                                          <td>Jan 29</td>
+                                       </tr>
+                                       <tr>
+                                          <td>Iran</td>
+                                          <td>101,739</td>
+                                          <td>+4,050</td>
+                                          <td>11,591</td>
+                                          <td>+812</td>
+                                          <td>14,620</td>
+                                          <td>75,528</td>
+                                          <td>3,981</td>
+                                          <td>1,683	</td>
+                                          <td>192</td>
+                                          <td>Jan 29</td>
+                                       </tr>
+                                       <tr>
+                                          <td>UK</td>
+                                          <td>101,739</td>
+                                          <td>+4,050</td>
+                                          <td>11,591</td>
+                                          <td>+812</td>
+                                          <td>14,620</td>
+                                          <td>75,528</td>
+                                          <td>3,981</td>
+                                          <td>1,683	</td>
+                                          <td>192</td>
+                                          <td>Jan 29</td>
+                                       </tr>
+                                       <tr>
+                                          <td>Switzerland</td>
+                                          <td>101,739</td>
+                                          <td>+4,050</td>
+                                          <td>11,591</td>
+                                          <td>+812</td>
+                                          <td>14,620</td>
+                                          <td>75,528</td>
+                                          <td>3,981</td>
+                                          <td>1,683	</td>
+                                          <td>192</td>
+                                          <td>Jan 29</td>
+                                       </tr>
+                                       <tr>
+                                          <td>Belgium</td>
+                                          <td>101,739</td>
+                                          <td>+4,050</td>
+                                          <td>11,591</td>
+                                          <td>+812</td>
+                                          <td>14,620</td>
+                                          <td>75,528</td>
+                                          <td>3,981</td>
+                                          <td>1,683	</td>
+                                          <td>192</td>
+                                          <td>Jan 29</td>
+                                       </tr>
+                                       <tr>
+                                          <td>Netherlands</td>
+                                          <td>101,739</td>
+                                          <td>+4,050</td>
+                                          <td>11,591</td>
+                                          <td>+812</td>
+                                          <td>14,620</td>
+                                          <td>75,528</td>
+                                          <td>3,981</td>
+                                          <td>1,683	</td>
+                                          <td>192</td>
+                                          <td>Jan 29</td>
+                                       </tr>
+                                       <tr>
+                                          <td>Turkey</td>
+                                          <td>101,739</td>
+                                          <td>+4,050</td>
+                                          <td>11,591</td>
+                                          <td>+812</td>
+                                          <td>14,620</td>
+                                          <td>75,528</td>
+                                          <td>3,981</td>
+                                          <td>1,683	</td>
+                                          <td>192</td>
+                                          <td>Jan 29</td>
+                                       </tr>
+                                       <tr>
+                                          <td>South Korea</td>
+                                          <td>101,739</td>
+                                          <td>+4,050</td>
+                                          <td>11,591</td>
+                                          <td>+812</td>
+                                          <td>14,620</td>
+                                          <td>75,528</td>
+                                          <td>3,981</td>
+                                          <td>1,683	</td>
+                                          <td>192</td>
+                                          <td>Jan 29</td>
+                                       </tr>
+                                       <tr>
+                                          <td>Austria</td>
+                                          <td>101,739</td>
+                                          <td>+4,050</td>
+                                          <td>11,591</td>
+                                          <td>+812</td>
+                                          <td>14,620</td>
+                                          <td>75,528</td>
+                                          <td>3,981</td>
+                                          <td>1,683	</td>
+                                          <td>192</td>
+                                          <td>Jan 29</td>
+                                       </tr>
+                                       <tr>
+                                          <td>Canada</td>
+                                          <td>101,739</td>
+                                          <td>+4,050</td>
+                                          <td>11,591</td>
+                                          <td>+812</td>
+                                          <td>14,620</td>
+                                          <td>75,528</td>
+                                          <td>3,981</td>
+                                          <td>1,683	</td>
+                                          <td>192</td>
+                                          <td>Jan 29</td>
+                                       </tr>
+                                       <tr>
+                                          <td>Portugal</td>
+                                          <td>101,739</td>
+                                          <td>+4,050</td>
+                                          <td>11,591</td>
+                                          <td>+812</td>
+                                          <td>14,620</td>
+                                          <td>75,528</td>
+                                          <td>3,981</td>
+                                          <td>1,683	</td>
+                                          <td>192</td>
+                                          <td>Jan 29</td>
+                                       </tr>
+                                    </tbody>
+                                    <tfoot>
+                                       <tr>
+                                          <td>Total</td>
+                                          <td>781,979</td>
+                                          <td>+58,589</td>
+                                          <td>37,606</td>
+                                          <td>+3,541</td>
+                                          <td>164,753</td>
+                                          <td>579,620</td>
+                                          <td>29,590</td>
+                                          <td>100.3</td>
+                                          <td>4.8</td>
+                                          <td>Jan 10</td>
+                                       </tr>
+                                    </tfoot>
+                                 </table>
+                              </div>
+                           </div>
+                           <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+                              <div class="table-responsive">
+                                 <table id="outbreakstwo" class="table table-responsive table-striped table-bordered" style="width:100%">
+                                    <thead>
+                                       <tr>
+                                          <th>Country,<br> Other</th>
+                                          <th>Total<br>Cases</th>
+                                          <th>New<br>Cases</th>
+                                          <th>Total<br> Deaths</th>
+                                          <th>New<br>Deaths</th>
+                                          <th>Total<br>Recoveres</th>
+                                          <th>Active<br>Cases</th>
+                                          <th>Serious,<br>Critical</th>
+                                          <th>Cases<br>/1M pop</th>
+                                          <th>Deaths<br> /1M pop</th>
+                                          <th>Reported<br>1st case</th>
+                                       </tr>
+                                    </thead>
+                                    <tbody>
+                                       <tr class="total_row_world odd" role="row">
+                                          <td>World</td>
+                                          <td>781,979</td>
+                                          <td>+58,589</td>
+                                          <td>37,606</td>
+                                          <td>+3,541</td>
+                                          <td>164,753</td>
+                                          <td>579,620</td>
+                                          <td>29,590</td>
+                                          <td>100.3</td>
+                                          <td>4.8</td>
+                                          <td>Jan 10</td>
+                                       </tr>
+                                       <tr>
+                                          <td>USA</td>
+                                          <td>161,647</td>
+                                          <td>+18,156</td>
+                                          <td>2,998</td>
+                                          <td>+415</td>
+                                          <td>5,254</td>
+                                          <td>153,395</td>
+                                          <td>3,512</td>
+                                          <td>488</td>
+                                          <td>9</td>
+                                          <td>Jan 20</td>
+                                       </tr>
+                                       <tr>
+                                          <td>Spain</td>
+                                          <td>101,739</td>
+                                          <td>+4,050</td>
+                                          <td>11,591</td>
+                                          <td>+812</td>
+                                          <td>14,620</td>
+                                          <td>75,528</td>
+                                          <td>3,981</td>
+                                          <td>1,683	</td>
+                                          <td>192</td>
+                                          <td>Jan 29</td>
+                                       </tr>
+                                       <tr>
+                                          <td>China</td>
+                                          <td>101,739</td>
+                                          <td>+4,050</td>
+                                          <td>11,591</td>
+                                          <td>+812</td>
+                                          <td>14,620</td>
+                                          <td>75,528</td>
+                                          <td>3,981</td>
+                                          <td>1,683	</td>
+                                          <td>192</td>
+                                          <td>Jan 29</td>
+                                       </tr>
+                                       <tr>
+                                          <td>Germany</td>
+                                          <td>101,739</td>
+                                          <td>+4,050</td>
+                                          <td>11,591</td>
+                                          <td>+812</td>
+                                          <td>14,620</td>
+                                          <td>75,528</td>
+                                          <td>3,981</td>
+                                          <td>1,683	</td>
+                                          <td>192</td>
+                                          <td>Jan 29</td>
+                                       </tr>
+                                       <tr>
+                                          <td>France</td>
+                                          <td>101,739</td>
+                                          <td>+4,050</td>
+                                          <td>11,591</td>
+                                          <td>+812</td>
+                                          <td>14,620</td>
+                                          <td>75,528</td>
+                                          <td>3,981</td>
+                                          <td>1,683	</td>
+                                          <td>192</td>
+                                          <td>Jan 29</td>
+                                       </tr>
+                                       <tr>
+                                          <td>Iran</td>
+                                          <td>101,739</td>
+                                          <td>+4,050</td>
+                                          <td>11,591</td>
+                                          <td>+812</td>
+                                          <td>14,620</td>
+                                          <td>75,528</td>
+                                          <td>3,981</td>
+                                          <td>1,683	</td>
+                                          <td>192</td>
+                                          <td>Jan 29</td>
+                                       </tr>
+                                       <tr>
+                                          <td>UK</td>
+                                          <td>101,739</td>
+                                          <td>+4,050</td>
+                                          <td>11,591</td>
+                                          <td>+812</td>
+                                          <td>14,620</td>
+                                          <td>75,528</td>
+                                          <td>3,981</td>
+                                          <td>1,683	</td>
+                                          <td>192</td>
+                                          <td>Jan 29</td>
+                                       </tr>
+                                       <tr>
+                                          <td>Switzerland</td>
+                                          <td>101,739</td>
+                                          <td>+4,050</td>
+                                          <td>11,591</td>
+                                          <td>+812</td>
+                                          <td>14,620</td>
+                                          <td>75,528</td>
+                                          <td>3,981</td>
+                                          <td>1,683	</td>
+                                          <td>192</td>
+                                          <td>Jan 29</td>
+                                       </tr>
+                                       <tr>
+                                          <td>Belgium</td>
+                                          <td>101,739</td>
+                                          <td>+4,050</td>
+                                          <td>11,591</td>
+                                          <td>+812</td>
+                                          <td>14,620</td>
+                                          <td>75,528</td>
+                                          <td>3,981</td>
+                                          <td>1,683	</td>
+                                          <td>192</td>
+                                          <td>Jan 29</td>
+                                       </tr>
+                                       <tr>
+                                          <td>Netherlands</td>
+                                          <td>101,739</td>
+                                          <td>+4,050</td>
+                                          <td>11,591</td>
+                                          <td>+812</td>
+                                          <td>14,620</td>
+                                          <td>75,528</td>
+                                          <td>3,981</td>
+                                          <td>1,683	</td>
+                                          <td>192</td>
+                                          <td>Jan 29</td>
+                                       </tr>
+                                       <tr>
+                                          <td>Turkey</td>
+                                          <td>101,739</td>
+                                          <td>+4,050</td>
+                                          <td>11,591</td>
+                                          <td>+812</td>
+                                          <td>14,620</td>
+                                          <td>75,528</td>
+                                          <td>3,981</td>
+                                          <td>1,683	</td>
+                                          <td>192</td>
+                                          <td>Jan 29</td>
+                                       </tr>
+                                       <tr>
+                                          <td>South Korea</td>
+                                          <td>101,739</td>
+                                          <td>+4,050</td>
+                                          <td>11,591</td>
+                                          <td>+812</td>
+                                          <td>14,620</td>
+                                          <td>75,528</td>
+                                          <td>3,981</td>
+                                          <td>1,683	</td>
+                                          <td>192</td>
+                                          <td>Jan 29</td>
+                                       </tr>
+                                       <tr>
+                                          <td>Austria</td>
+                                          <td>101,739</td>
+                                          <td>+4,050</td>
+                                          <td>11,591</td>
+                                          <td>+812</td>
+                                          <td>14,620</td>
+                                          <td>75,528</td>
+                                          <td>3,981</td>
+                                          <td>1,683	</td>
+                                          <td>192</td>
+                                          <td>Jan 29</td>
+                                       </tr>
+                                       <tr>
+                                          <td>Canada</td>
+                                          <td>101,739</td>
+                                          <td>+4,050</td>
+                                          <td>11,591</td>
+                                          <td>+812</td>
+                                          <td>14,620</td>
+                                          <td>75,528</td>
+                                          <td>3,981</td>
+                                          <td>1,683	</td>
+                                          <td>192</td>
+                                          <td>Jan 29</td>
+                                       </tr>
+                                       <tr>
+                                          <td>Portugal</td>
+                                          <td>101,739</td>
+                                          <td>+4,050</td>
+                                          <td>11,591</td>
+                                          <td>+812</td>
+                                          <td>14,620</td>
+                                          <td>75,528</td>
+                                          <td>3,981</td>
+                                          <td>1,683	</td>
+                                          <td>192</td>
+                                          <td>Jan 29</td>
+                                       </tr>
+                                    </tbody>
+                                    <tfoot>
+                                       <tr>
+                                          <td>Total</td>
+                                          <td>781,979</td>
+                                          <td>+58,589</td>
+                                          <td>37,606</td>
+                                          <td>+3,541</td>
+                                          <td>164,753</td>
+                                          <td>579,620</td>
+                                          <td>29,590</td>
+                                          <td>100.3</td>
+                                          <td>4.8</td>
+                                          <td>Jan 10</td>
+                                       </tr>
+                                    </tfoot>
+                                 </table>
+                              </div>
+                           </div>
+                           <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
+                              <div class="table-responsive">
+                                 <table id="outbreaksthree" class="table table-responsive table-striped table-bordered" style="width:100%">
+                                    <thead>
+                                       <tr>
+                                          <th>Country,<br> Other</th>
+                                          <th>Total<br>Cases</th>
+                                          <th>New<br>Cases</th>
+                                          <th>Total<br> Deaths</th>
+                                          <th>New<br>Deaths</th>
+                                          <th>Total<br>Recoveres</th>
+                                          <th>Active<br>Cases</th>
+                                          <th>Serious,<br>Critical</th>
+                                          <th>Cases<br>/1M pop</th>
+                                          <th>Deaths<br> /1M pop</th>
+                                          <th>Reported<br>1st case</th>
+                                       </tr>
+                                    </thead>
+                                    <tbody>
+                                       <tr class="total_row_world odd" role="row">
+                                          <td>World</td>
+                                          <td>781,979</td>
+                                          <td>+58,589</td>
+                                          <td>37,606</td>
+                                          <td>+3,541</td>
+                                          <td>164,753</td>
+                                          <td>579,620</td>
+                                          <td>29,590</td>
+                                          <td>100.3</td>
+                                          <td>4.8</td>
+                                          <td>Jan 10</td>
+                                       </tr>
+                                       <tr>
+                                          <td>USA</td>
+                                          <td>161,647</td>
+                                          <td>+18,156</td>
+                                          <td>2,998</td>
+                                          <td>+415</td>
+                                          <td>5,254</td>
+                                          <td>153,395</td>
+                                          <td>3,512</td>
+                                          <td>488</td>
+                                          <td>9</td>
+                                          <td>Jan 20</td>
+                                       </tr>
+                                       <tr>
+                                          <td>Spain</td>
+                                          <td>101,739</td>
+                                          <td>+4,050</td>
+                                          <td>11,591</td>
+                                          <td>+812</td>
+                                          <td>14,620</td>
+                                          <td>75,528</td>
+                                          <td>3,981</td>
+                                          <td>1,683	</td>
+                                          <td>192</td>
+                                          <td>Jan 29</td>
+                                       </tr>
+                                       <tr>
+                                          <td>China</td>
+                                          <td>101,739</td>
+                                          <td>+4,050</td>
+                                          <td>11,591</td>
+                                          <td>+812</td>
+                                          <td>14,620</td>
+                                          <td>75,528</td>
+                                          <td>3,981</td>
+                                          <td>1,683	</td>
+                                          <td>192</td>
+                                          <td>Jan 29</td>
+                                       </tr>
+                                       <tr>
+                                          <td>Germany</td>
+                                          <td>101,739</td>
+                                          <td>+4,050</td>
+                                          <td>11,591</td>
+                                          <td>+812</td>
+                                          <td>14,620</td>
+                                          <td>75,528</td>
+                                          <td>3,981</td>
+                                          <td>1,683	</td>
+                                          <td>192</td>
+                                          <td>Jan 29</td>
+                                       </tr>
+                                       <tr>
+                                          <td>France</td>
+                                          <td>101,739</td>
+                                          <td>+4,050</td>
+                                          <td>11,591</td>
+                                          <td>+812</td>
+                                          <td>14,620</td>
+                                          <td>75,528</td>
+                                          <td>3,981</td>
+                                          <td>1,683	</td>
+                                          <td>192</td>
+                                          <td>Jan 29</td>
+                                       </tr>
+                                       <tr>
+                                          <td>Iran</td>
+                                          <td>101,739</td>
+                                          <td>+4,050</td>
+                                          <td>11,591</td>
+                                          <td>+812</td>
+                                          <td>14,620</td>
+                                          <td>75,528</td>
+                                          <td>3,981</td>
+                                          <td>1,683	</td>
+                                          <td>192</td>
+                                          <td>Jan 29</td>
+                                       </tr>
+                                       <tr>
+                                          <td>UK</td>
+                                          <td>101,739</td>
+                                          <td>+4,050</td>
+                                          <td>11,591</td>
+                                          <td>+812</td>
+                                          <td>14,620</td>
+                                          <td>75,528</td>
+                                          <td>3,981</td>
+                                          <td>1,683	</td>
+                                          <td>192</td>
+                                          <td>Jan 29</td>
+                                       </tr>
+                                       <tr>
+                                          <td>Switzerland</td>
+                                          <td>101,739</td>
+                                          <td>+4,050</td>
+                                          <td>11,591</td>
+                                          <td>+812</td>
+                                          <td>14,620</td>
+                                          <td>75,528</td>
+                                          <td>3,981</td>
+                                          <td>1,683	</td>
+                                          <td>192</td>
+                                          <td>Jan 29</td>
+                                       </tr>
+                                       <tr>
+                                          <td>Belgium</td>
+                                          <td>101,739</td>
+                                          <td>+4,050</td>
+                                          <td>11,591</td>
+                                          <td>+812</td>
+                                          <td>14,620</td>
+                                          <td>75,528</td>
+                                          <td>3,981</td>
+                                          <td>1,683	</td>
+                                          <td>192</td>
+                                          <td>Jan 29</td>
+                                       </tr>
+                                       <tr>
+                                          <td>Netherlands</td>
+                                          <td>101,739</td>
+                                          <td>+4,050</td>
+                                          <td>11,591</td>
+                                          <td>+812</td>
+                                          <td>14,620</td>
+                                          <td>75,528</td>
+                                          <td>3,981</td>
+                                          <td>1,683	</td>
+                                          <td>192</td>
+                                          <td>Jan 29</td>
+                                       </tr>
+                                       <tr>
+                                          <td>Turkey</td>
+                                          <td>101,739</td>
+                                          <td>+4,050</td>
+                                          <td>11,591</td>
+                                          <td>+812</td>
+                                          <td>14,620</td>
+                                          <td>75,528</td>
+                                          <td>3,981</td>
+                                          <td>1,683	</td>
+                                          <td>192</td>
+                                          <td>Jan 29</td>
+                                       </tr>
+                                       <tr>
+                                          <td>South Korea</td>
+                                          <td>101,739</td>
+                                          <td>+4,050</td>
+                                          <td>11,591</td>
+                                          <td>+812</td>
+                                          <td>14,620</td>
+                                          <td>75,528</td>
+                                          <td>3,981</td>
+                                          <td>1,683	</td>
+                                          <td>192</td>
+                                          <td>Jan 29</td>
+                                       </tr>
+                                       <tr>
+                                          <td>Austria</td>
+                                          <td>101,739</td>
+                                          <td>+4,050</td>
+                                          <td>11,591</td>
+                                          <td>+812</td>
+                                          <td>14,620</td>
+                                          <td>75,528</td>
+                                          <td>3,981</td>
+                                          <td>1,683	</td>
+                                          <td>192</td>
+                                          <td>Jan 29</td>
+                                       </tr>
+                                       <tr>
+                                          <td>Canada</td>
+                                          <td>101,739</td>
+                                          <td>+4,050</td>
+                                          <td>11,591</td>
+                                          <td>+812</td>
+                                          <td>14,620</td>
+                                          <td>75,528</td>
+                                          <td>3,981</td>
+                                          <td>1,683	</td>
+                                          <td>192</td>
+                                          <td>Jan 29</td>
+                                       </tr>
+                                       <tr>
+                                          <td>Portugal</td>
+                                          <td>101,739</td>
+                                          <td>+4,050</td>
+                                          <td>11,591</td>
+                                          <td>+812</td>
+                                          <td>14,620</td>
+                                          <td>75,528</td>
+                                          <td>3,981</td>
+                                          <td>1,683	</td>
+                                          <td>192</td>
+                                          <td>Jan 29</td>
+                                       </tr>
+                                    </tbody>
+                                    <tfoot>
+                                       <tr>
+                                          <td>Total</td>
+                                          <td>781,979</td>
+                                          <td>+58,589</td>
+                                          <td>37,606</td>
+                                          <td>+3,541</td>
+                                          <td>164,753</td>
+                                          <td>579,620</td>
+                                          <td>29,590</td>
+                                          <td>100.3</td>
+                                          <td>4.8</td>
+                                          <td>Jan 10</td>
+                                       </tr>
+                                    </tfoot>
+                                 </table>
+                              </div>
+                           </div>
+                        </div>
+                        <!---------col-end---------->
+                     </div>
+                     <!----------row-end---------->
+                  </div>
+               </div>
+            </section>
+            <!-----------overall_deatils-end-------------->
+
+
+{% include 'footer.html' %}

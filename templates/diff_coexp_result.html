@@ -1,0 +1,216 @@
+{% load static %}
+{% include 'header.html' %}
+
+
+<main class="main-content">
+    <!------main-content------>
+    <!-----------page_title--------------->
+    <section class="page_title small pdt_80  pdb_40">
+        <div class="container">
+            <div class="row">
+                <!---------row----------->
+                <div class="col-lg-12 col-md-12 text-center">
+                    <!---------col----------->
+                    <div class="content_box">
+
+                    </div>
+                    <!---------col-end---------->
+                </div>
+                <!----------row-end---------->
+            </div>
+        </div>
+    </section>
+    <!-----------page_title-end-------------->
+
+
+    <!-----------symptoms-checker--------------->
+    <section class="symptoms_checker  pdt_80  pdb_40">
+        <div class="container">
+            <div class="row">
+                <!---------row----------->
+                <div class="col-lg-12 col-md-12">
+                    <!---------col----------->
+                    <div class="contnet_box">
+
+
+                        {% if error %}
+
+                            <div class="alert" role="alert">
+                                <span class="linearicons-warning"></span>
+                                <div class="text">
+                                    <h2>Error</h2>
+                                    <p>{{ error }} </p>
+                                </div>
+                            </div>
+
+                        {% endif %}
+
+
+
+
+
+
+
+                        <div class="symptoms_result_box">
+                            <div class="upper_box">
+                                <div class="row">
+                                    <div class="col-lg-3">
+                                        <div class="result_heading">
+                                            <h2>Results</h2>
+                                            <p>See the result below</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-9">
+                                        <div class="patient_details">
+                                            <h2>Your details</h2>
+                                            <ul>
+                                                <li> Disease: <span>{{ cancer_ids|get_item:response.cancer_id }}</span>
+                                                </li>
+                                                <li> Healthy Sample: <span>{{ response.healthy_sample }}</span></li>
+                                                <li>Disease Sample: <span>{{ response.disease_sample }}</span></li>
+                                                <br/>
+
+                                                <li> Healthy
+                                                    Pcritic:<span> {{ response.disease_pcritic|format_pvalue }}</span>
+                                                </li>
+                                                <li> Disease
+                                                    Pcritic:<span> {{ response.healthy_pcritic|format_pvalue }}</span>
+                                                </li>
+                                                <br/>
+
+                                                <li> Healthy Normality
+                                                    Pvalue:<span> {{ response.healthy_normality_pvalue|format_pvalue }}</span>
+                                                </li>
+                                                <li> Disease Normality
+                                                    Pvalue:<span> {{ response.disease_normality_pvalue|format_pvalue }}</span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="lower_box">
+
+
+                                <div class="row">
+                                    <div class="col-lg-3">
+                                        <div class="percentage">
+                                            <h1>Type</h1>
+                                            <div class="progress mx-auto" data-value='0'>
+                                             <span class="progress-left">
+                                             <span class="progress-bar"></span>
+                                             </span>
+                                                <span class="progress-right">
+                                             <span class="progress-bar"></span>
+                                             </span>
+                                                <div class="progress-value w-100 h-100 rounded-circle d-flex align-items-center justify-content-center">
+                                                    <div class="h2 font-weight-bold">Disease</div>
+                                                </div>
+                                            </div>
+                                            <div class="result_final">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-9">
+                                        <div class="patient_result_description">
+                                            <div class="text">
+                                                <h2> Interacted Genes:
+                                                    <span class="badge badge-warning">
+                                                     <script id="disease_diff_co_expression"
+                                                             type="application/json"> {{ response.disease_diff_co_expression|safe }}</script>
+                                                    <script>
+                                                        var data = JSON.parse(document.getElementById('disease_diff_co_expression').textContent);
+                                                        var size = Object.keys(data.gene1).length;
+                                                        document.write(size)
+                                                    </script>
+ </span>
+                                                </h2>
+
+
+                                            </div>
+
+
+                                            <div>
+                                                <a href="/uploads/output/disease_{{ response.input_excel }}"
+                                                   class="theme_btn tp_two">Download Result File</a>
+                                            </div>
+                                            <a href="/network_result/{{ response.id }}/0"
+                                               class="theme_btn tp_two start_network_analyze_button">Show Differential
+                                                Co-Expression
+                                                Networks</a>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <hr/>
+
+
+                                <div class="row">
+                                    <div class="col-lg-3">
+                                        <div class="percentage">
+                                            <h1>Type</h1>
+                                            <div class="progress mx-auto" data-value='0'>
+                                             <span class="progress-left">
+                                             <span class="progress-bar"></span>
+                                             </span>
+                                                <span class="progress-right">
+                                             <span class="progress-bar"></span>
+                                             </span>
+                                                <div class="progress-value w-100 h-100 rounded-circle d-flex align-items-center justify-content-center">
+                                                    <div class="h2 font-weight-bold">Healthy</div>
+                                                </div>
+                                            </div>
+                                            <div class="result_final">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-9">
+                                        <div class="patient_result_description">
+                                            <div class="text">
+                                                <h2> Interacted Genes:
+
+                                                    <span class="badge badge-warning">
+
+                                                        <script id="healthy_diff_co_expression"
+                                                                type="application/json"> {{ response.healthy_diff_co_expression|safe }}</script>
+                                                        <script>
+                                                            var data = JSON.parse(document.getElementById('healthy_diff_co_expression').textContent);
+                                                            var size = Object.keys(data.gene1).length;
+                                                            document.write(size)
+                                                        </script>
+
+                                                    </span>
+
+                                                </h2>
+                                            </div>
+
+
+                                            <div>
+                                                <a href="/uploads/output/healthy_{{ response.input_excel }}"
+                                                   class="theme_btn tp_two">Download Result File</a>
+                                            </div>
+                                            <a href="/network_result/{{ response.id }}/1"
+                                               class="theme_btn tp_two start_network_analyze_button">Show Differential
+                                                Co-Expression
+                                                Networks</a>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <!---------col-end---------->
+                </div>
+                <!----------row-end---------->
+            </div>
+        </div>
+    </section>
+    <!-----------symptoms-checker-end-------------->
+
+
+{% include 'footer.html' %}

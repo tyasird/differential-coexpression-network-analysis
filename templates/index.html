@@ -1,0 +1,236 @@
+{% load static %}
+{% include 'header.html' %}
+
+<main class="main-content">
+    <!------main-content------>
+    <!-------slider--section------>
+    <section class="banner type_two" style="background:url({% static "assets/image/bg.jpg" %})">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 d-flex  pr_0">
+                    <div class="content_outer">
+                        <div class="inner_box">
+                            <h6 class="wow slideInDown" data-wow-delay="100ms" data-wow-duration="1500ms">DCNA web
+                                tool</h6>
+                            <h1 class="wow slideInLeft" data-wow-delay="200ms" data-wow-duration="1500ms">Differential
+                                Co-Expression Network Analysis</h1>
+                            <h6 class="wow slideInLeft" data-wow-delay="300ms" data-wow-duration="1500ms"> fully
+                                integrated with cytoscape
+                            </h6>
+                        </div>
+                        <div class="symptoms_checker_form type_one wow fadeInLeft" data-wow-delay="0ms"
+                             data-wow-duration="1500ms">
+
+
+                            <form action="do_analyze" method="post" enctype="multipart/form-data"
+                                  class="needs-validation" id="do_analyze" >
+
+                                {% csrf_token %}
+
+
+                                <div class="row">
+
+
+                                    <div class="col-lg-12 col-md-12">
+                                        <div class="form-group first_box">
+                                            <h2>Input File</h2>
+                                            <input type="file" name="input_excel"
+                                                   placeholder="Excel File" required/>
+
+                                            <div class="invalid-feedback">This field is required.</div>
+                                            <div class="text-danger">{{ form.input_excel.errors }}</div>
+
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-6 col-md-6">
+                                        <div class="form-group clearfix second_group">
+
+                                            <h2>Control Number </h2>
+                                            <input type="text" name="healthy_sample"
+                                                   placeholder="Number of healthy samples"/>
+
+                                            <div class="invalid-feedback">This field is required.</div>
+                                            <div class="text-danger">{{ form.healthy_sample.errors }}</div>
+
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6">
+                                        <div class="form-group third_box">
+                                            <h2>Disease Type</h2>
+                                            <select name="cancer_id" id="age">
+
+
+                                                {% for key, value in cancer_ids.items %}
+
+                                                <option value="{{ key }}" {% if forloop.first	 %} selected {% endif %}>{{ value }}</option>
+                                                {% endfor %}
+
+                                            </select>
+
+                                            <div class="invalid-feedback">This field is required.</div>
+                                            <div class="text-danger">{{ form.cancer_id.errors }}</div>
+
+                                        </div>
+                                    </div>
+
+
+                                    <div class="col-lg-6 col-md-6">
+                                        <div class="form-group">
+                                            <button class="sumptoms_submit" type="submit" id="start_analyze_button">
+                                                Start Analyze
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="image_box wow slideInDown" data-wow-delay="300ms" data-wow-duration="1500ms">
+
+                        <div class="row">
+                            <div class="col-md-12 index_right_area">
+                                <div class="content_outer col-lg-12">
+                                    <div class="inner_box">
+                                        <h1 >How to use it?</h1>
+                                        <h6>What is Lorem Ipsum?</h6>
+                                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+
+    <h6>Why do we use it?</h6>
+                                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <!--
+                      {% if form.errors %}
+                                <div class="row  mt-3">
+                                    <div class="col-md-12 index_right_area">
+                                        <div class="alert alert-warning alert-dismissable" role="alert">
+                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                            <h3 class="alert-heading font-size-h4 font-w400">Error!</h3>
+
+
+                                            {% for field in form %}
+                                                {% for error in field.errors %}
+                                                    <p> {{ field.name }} : {{ error }} </p>
+                                                {% endfor %}
+                                            {% endfor %}
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endif %}
+-->
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-------slider--section-end----->
+    <!-----------counter--------------->
+    <section class="counter type_two wow fadeIn" data-wow-delay="600ms" data-wow-duration="1500ms">
+        <div class="container">
+            <div class="counter_outer_box">
+                <div class="row">
+                    <!---------row----------->
+                    <div class="col-lg-4 col-md-12">
+                        <!---------col----------->
+                        <div class="heading tp_one">
+                            <h6>DATABASE</h6>
+                            <h1> Statistics</h1>
+                            <p>Last updated: March 27, 2020, 14:49 GMT</p>
+                        </div>
+                        <!---------col-end---------->
+                    </div>
+                    <div class="col-lg-8 col-md-12 d-flex">
+                        <!---------col----------->
+                        <div class="counter_box_outer">
+                            <div class="counter_box type_two one">
+                                <div class="image_box">
+                                    <i class="fas fa-arrow-up fa-4x"></i>
+                                </div>
+                                <div class="text_box">
+                                    <h2><span class="odometer " data-count="558357"></span></h2>
+                                    <h6> Networks</h6>
+                                </div>
+                            </div>
+                            <div class="counter_box type_two two">
+                                <div class="image_box">
+                                    <i class="fas fa-arrow-up fa-4x"></i>
+                                </div>
+                                <div class="text_box">
+                                    <h2><span class="odometer " data-count="25262"></span></h2>
+                                    <h6>Clusters</h6>
+                                </div>
+                            </div>
+                            <div class="counter_box type_two three">
+                                <div class="image_box">
+                                    <i class="fas fa-arrow-up fa-4x"></i>
+                                </div>
+                                <div class="text_box">
+                                    <h2><span class="odometer " data-count="128718"></span></h2>
+                                    <h6>Analysis</h6>
+                                </div>
+                            </div>
+                        </div>
+                        <!---------col-end---------->
+                    </div>
+                    <!----------row-end---------->
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-----------counter-end-------------->
+    <!-----------about--------------->
+    <section class="about type_two pdt_100 pdb_100 wow fadeIn" data-wow-delay="600ms" data-wow-duration="1500ms">
+        <div class="container">
+            <div class="row">
+                <!---------row----------->
+                <div class="col-lg-6 col-md-12 d-flex">
+                    <!---------col----------->
+                    <div class="about_content">
+                        <div class="heading tp_one">
+                            <h6>DCNA </h6>
+                            <h1> About the web tool</h1>
+                        </div>
+                        <p> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
+                            been the industry's standard dummy text ever since the 1500s, when an unknown printer took a
+                            galley of type and scrambled it to make a type specimen book. It has survived not only five
+                            centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
+                            It
+                            was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum
+                            passages, and more recently with desktop publishing software like Aldus PageMaker including
+                            versions of Lorem Ipsum.
+                        </p>
+                    </div>
+                    <!---------col-end---------->
+                </div>
+                <div class="col-lg-6 col-md-12">
+                    <!---------col----------->
+                    <div class="image_box one">
+                        <img src="{% static "assets/image/resources/about-2-1.png" %}" class="img-fluid" alt="img"/>
+                    </div>
+                    <!---------col-end---------->
+                </div>
+                <!----------row-end---------->
+            </div>
+            <div class="empty_space"></div>
+
+        </div>
+    </section>
+    <!-----------counter-end-------------->
+
+
+{% include 'footer.html' %}
