@@ -148,3 +148,8 @@ class DcnaTool:
     def interaction_count(self, healthy, disease):
 
         return len(healthy.index), len(disease.index)
+
+    def find_module_interactions(self, df, cluster):
+
+        interactions = df.loc[(df['gene1'].isin(cluster)) & (df['gene2'].isin(cluster))].reset_index(drop=True)
+        return interactions[interactions['gene1'] < interactions['gene2']]

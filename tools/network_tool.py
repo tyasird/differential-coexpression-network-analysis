@@ -38,7 +38,6 @@ class NetworkTool:
             title=network_name,
             collection=network_name + '_collection'
         )
-        py4.layout_network
         return network_suid
 
     def analyze_network(self):
@@ -78,7 +77,12 @@ class NetworkTool:
                 clusters.append(data)
                 py4.export_image(self.network_folder + str(hash))
 
-            return json.dumps(clusters), None # None means no error
+            return json.dumps(clusters), None  # None means no error
 
         else:
             return "", "no clusters found."
+
+    def set_style(self, number):
+        styles = ['Marquee', 'Universe', 'Directed', 'DisGeNETstyleV2', 'default', 'Minimal', 'Sample3', 'Ripple', 'Sample1', 'Big Labels', 'default black', 'Sample2', 'Gradient1',
+                  'Nested Network Style', 'Solid', 'Curved']
+        return py4.set_visual_style(styles[number])

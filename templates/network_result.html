@@ -230,7 +230,7 @@
                                             <li class="list-group-item list-group-item-warning">Healthy Interactions
                                                 <span
                                                         class="badge badge-primary"
-                                                        style="font-size: 13px">{{ diff_coexp.healthy_diff_co_expression|find_interactions:cluster|length }}</span>
+                                                        style="font-size: 13px">{{ diff_coexp.healthy_diff_co_expression|find_cluster_interactions:cluster|length }}</span>
                                                 {% if network.type == 0 %}
                                                     <span class="badge badge-dark"
                                                           style="font-size: 13px">Important </span>
@@ -241,8 +241,8 @@
 
 
 
-                                            {% for value in diff_coexp.healthy_diff_co_expression|find_interactions:cluster %}
-                                                <li class="list-group-item">{{ value }}</li>
+                                            {% for key, value in diff_coexp.healthy_diff_co_expression|find_cluster_interactions:cluster %}
+                                                <li class="list-group-item" style="font-size:12px">{{ key }} <i class="las la-angle-double-right"></i> {{ value }}</li>
                                             {% endfor %}
 
                                         </ul>
@@ -255,7 +255,7 @@
                                             <li class="list-group-item list-group-item-warning">Disease
                                                 Interactions<span
                                                         class="badge badge-primary"
-                                                        style="font-size: 13px">{{ diff_coexp.disease_diff_co_expression|find_interactions:cluster|length }}
+                                                        style="font-size: 13px">{{ diff_coexp.disease_diff_co_expression|find_cluster_interactions:cluster|length }}
                                                 </span>
                                                 {% if network.type == 1 %}
                                                     <span class="badge badge-dark"
@@ -267,8 +267,8 @@
 
 
 
-                                            {% for value in diff_coexp.disease_diff_co_expression|find_interactions:cluster %}
-                                                <li class="list-group-item">{{ value }}</li>
+                                            {% for key , value in diff_coexp.disease_diff_co_expression|find_cluster_interactions:cluster %}
+                                                <li class="list-group-item" style="font-size:12px">{{ key }} <i class="las la-angle-double-right"></i> {{ value }}</li>
                                             {% endfor %}
 
 

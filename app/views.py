@@ -20,6 +20,7 @@ from django.utils.safestring import mark_safe
 from django.forms.models import model_to_dict
 import pandas as pd
 
+
 def index(request):
     cancer_ids = helper.cancer_ids()
     return render(request, 'index.html', {'cancer_ids': cancer_ids})
@@ -55,11 +56,12 @@ def network_result(request, diff_coexp_id, type):
 
         network_tool = NetworkTool()
         if network_tool.get_session():
-            return render(request, 'network_result.html', {'error': 'Cytoscape is busy. Please try again later or Refresh the page.'})
+            return render(request, 'diff_coexp_result.html', {'error': 'Cytoscape is busy. Please try again later or Refresh the page.', 'response': diff_coexp, 'cancer_ids': cancer_ids})
         else:
             session = network_tool.create_session()
             read = network_tool.read_excel(output_folder + prefix + diff_coexp.input_excel)
             create_network = network_tool.create_network(read, session)
+            #network_tool.set_style(15)
             mcode = network_tool.run_mcode()
             clusters, error = network_tool.get_clusters(mcode, 0)
             if error is not None:
@@ -77,7 +79,7 @@ def network_result(request, diff_coexp_id, type):
                 mcode=clusters
             )
 
-            return render(request, 'network_result.html', {'clusters': json.loads(clusters), 'network':create, 'diff_coexp': diff_coexp, 'cancer_ids': cancer_ids})
+            return render(request, 'network_result.html', {'clusters': json.loads(clusters), 'network': create, 'diff_coexp': diff_coexp, 'cancer_ids': cancer_ids})
 
     # record found in db, just show it
     else:
@@ -181,12 +183,21 @@ jsonify.is_safe = True
 
 @register.filter
 def find_network_density(value, arg):
-    return int (round(arg / ((value * (value - 1)) / 2),  2) * 100)
+    return int(round(arg / ((value * (value - 1)) / 2), 2) * 100)
 
 
 @register.filter
 def find_interactions(value, arg):
-    data= pd.read_json(value)
+    data = pd.read_json(value)
     cluster = arg['table']['gene'].values()
     filter = data.loc[data['gene1'].isin(cluster)].reset_index(drop=True)
-    return filter['gene2'].to_list()
+    return filter['gene2'].values.tolist()
+
+
+@register.filter
+def find_cluster_interactions(value, arg):
+    data = pd.read_json(value)
+    cluster = arg['table']['gene'].values()
+    interactions = data.loc[(data['gene1'].isin(cluster)) & (data['gene2'].isin(cluster))].reset_index(drop=True)
+    interactions = interactions[interactions['gene1'] < interactions['gene2']]
+    return interactions[['gene1', 'gene2']].values.tolist()

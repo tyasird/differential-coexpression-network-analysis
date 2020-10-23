@@ -1,3 +1,4 @@
+json [] ile degil {} ile yapilacak
 icon yapilacak.
 notify import edilecek.
 loading
