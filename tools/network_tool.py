@@ -13,6 +13,7 @@ class NetworkTool:
     def __init__(self):
         self.session_folder = 'uploads/cytoscape/session/'
         self.network_folder = 'uploads/cytoscape/network/'
+        self.style_folder = 'static/cytoscape/'
         self.session_name = None
 
     def create_session(self):
@@ -50,15 +51,17 @@ class NetworkTool:
         sleep(3)
         return mcode
 
-    def get_clusters(self, mcode, min_nodes):
+    def get_clusters(self, mcode, min_nodes, layout=None):
 
         if mcode is not None:
 
             limited_clusters = [i for i in range(len(mcode['clusters'])) if len(mcode['clusters'][i]['nodes']) >= min_nodes]
             clusters = []
             for i in range(len(limited_clusters)):
-                view_id = py4.commands.commands_post('mcode view id=1 rank=' + str(i + 1))
                 hash = uuid.uuid4().hex
+                view_id = py4.commands.commands_post('mcode view id=1 rank=' + str(i + 1))
+                if layout is not None:
+                    py4.layout_network(layout)
 
                 data = {
                     "id": i,
@@ -82,7 +85,22 @@ class NetworkTool:
         else:
             return "", "no clusters found."
 
-    def set_style(self, number):
+    def set_style(self, number=None, default=None, name=None):
         styles = ['Marquee', 'Universe', 'Directed', 'DisGeNETstyleV2', 'default', 'Minimal', 'Sample3', 'Ripple', 'Sample1', 'Big Labels', 'default black', 'Sample2', 'Gradient1',
                   'Nested Network Style', 'Solid', 'Curved']
+        if default == True:
+            return py4.set_visual_style('default')
+        if name is not None:
+            return py4.set_visual_style(name)
+
         return py4.set_visual_style(styles[number])
+
+    def set_layout(self, number, default=None):
+        layouts = ['attribute-circle', 'stacked-node-layout', 'degree-circle', 'circular', 'attributes-layout', 'kamada-kawai', 'force-directed', 'cose', 'grid', 'hierarchical',
+                   'fruchterman-rheingold', 'isom', 'force-directed-cl']
+        return py4.layout_network(layouts[number])
+
+    def load_style(self, file):
+        load = py4.styles.import_visual_styles(self.style_folder + file)
+        return load[0]
+

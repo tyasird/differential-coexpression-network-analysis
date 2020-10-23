@@ -61,9 +61,10 @@ def network_result(request, diff_coexp_id, type):
             session = network_tool.create_session()
             read = network_tool.read_excel(output_folder + prefix + diff_coexp.input_excel)
             create_network = network_tool.create_network(read, session)
-            #network_tool.set_style(15)
+            load_style = network_tool.load_style('yd.xml')
+            set_style = network_tool.set_style(name=load_style)
             mcode = network_tool.run_mcode()
-            clusters, error = network_tool.get_clusters(mcode, 0)
+            clusters, error = network_tool.get_clusters(mcode, 0) # layout='hierarchical'
             if error is not None:
                 delete = network_tool.delete_session()
                 return render(request, 'diff_coexp_result.html', {
