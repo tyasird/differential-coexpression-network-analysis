@@ -64,7 +64,7 @@ def network_result(request, diff_coexp_id, type):
             load_style = network_tool.load_style('yd.xml')
             set_style = network_tool.set_style(name=load_style)
             mcode = network_tool.run_mcode()
-            clusters, error = network_tool.get_clusters(mcode, 0) # layout='hierarchical'
+            clusters, error = network_tool.get_clusters(mcode, 0, layout='hierarchical') # layout='hierarchical'
             if error is not None:
                 delete = network_tool.delete_session()
                 return render(request, 'diff_coexp_result.html', {

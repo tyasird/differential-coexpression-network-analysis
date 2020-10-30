@@ -1,3 +1,14 @@
+.zoom-ust{
+font-family: inherit;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+.zoom{
+        transform: scale(1);
+    margin-top: 75px;
+}
+
 .logo {
     width: 300px;
     height: auto;
