@@ -1,1 +1,13 @@
 .idea
+db
+logs/*
+tool.log
+uploads/cytoscape/network/*
+uploads/cytoscape/session/*
+uploads/input/*
+uploads/output/*
+uploads/status/*
+env/*
+env
+
+

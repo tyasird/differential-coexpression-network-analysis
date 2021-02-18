@@ -1,55 +1,81 @@
 /***************************************************************************************************************
-||||||||||||||||||||||||||||        CUSTOM SCRIPT FOR THE COV                      |||||||||||||||||||||||||||
-****************************************************************************************************************
-||||||||||||||||||||||||||||              TABLE OF CONTENT                  ||||||||||||||||||||||||||||||||||||
-****************************************************************************************************************
-****************************************************************************************************************
+ ||||||||||||||||||||||||||||        CUSTOM SCRIPT FOR THE COV                      |||||||||||||||||||||||||||
+ ****************************************************************************************************************
+ ||||||||||||||||||||||||||||              TABLE OF CONTENT                  ||||||||||||||||||||||||||||||||||||
+ ****************************************************************************************************************
+ ****************************************************************************************************************
 
-01. Elements Animation
-02. prealoader
-03. Odometer JS
-04. selectdropdown
-05. LightBox
-06. searchpopuptoggler
-07. customcursoroverlay
-08. sidemenutoggler
-09. update clock
-10. isotope
-11. Portfolio Tabs
-12. scrolltotop
-13. cart product increasing
-14. pricefilter
-15. owl-carousel
+ 01. Elements Animation
+ 02. prealoader
+ 03. Odometer JS
+ 04. selectdropdown
+ 05. LightBox
+ 06. searchpopuptoggler
+ 07. customcursoroverlay
+ 08. sidemenutoggler
+ 09. update clock
+ 10. isotope
+ 11. Portfolio Tabs
+ 12. scrolltotop
+ 13. cart product increasing
+ 14. pricefilter
+ 15. owl-carousel
 
 
-****************************************************************************************************************
-||||||||||||||||||||||||||||            End TABLE OF CONTENT                ||||||||||||||||||||||||||||||||||||
-****************************************************************************************************************/
+ ****************************************************************************************************************
+ ||||||||||||||||||||||||||||            End TABLE OF CONTENT                ||||||||||||||||||||||||||||||||||||
+ ****************************************************************************************************************/
 
 
 "use strict";
 
-$(".start_network_analyze_button").click(function(){
+$(".start_network_analyze_button").click(function (e) {
     $('.preloader').show()
 
-
 });
 
 
+function updateRangeInput(val) {
+    document.getElementById('rangeInput').value = val;
+}
 
-$("#start_analyze_button").click(function(){
+
+function doAjax() {
+    let status_hash = $('#status_hash').val()
+    $.ajax({
+        type: 'GET',
+        url: 'status/' + status_hash,
+        dataType: 'text',
+        success: function (data) {
+            $('.wait').html(data);
+        },
+        complete: function (data) {
+            setTimeout(doAjax, 1000);
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+          console.log(textStatus, errorThrown);
+        }
+    });
+}
+
+
+$("#start_analyze_button").click(function (e) {
+
     var $myForm = $('#do_analyze');
-    if( $myForm[0].checkValidity()) {
-    // If the form is invalid, submit it. The form won't actually submit;
-    // this will just cause the browser to display the native HTML5 error messages.
-            $('.preloader').show()
+    if ($myForm[0].checkValidity()) {
 
-        $myForm.find(':submit').click();
+        setTimeout(doAjax, 1000);
+        $('.preloader').show()
+        $('#start_analyze_button').click();
+
+
+
     }
 
+
 });
 
-$('.about_tool_link').on('click', function(e) {
+$('.about_tool_link').on('click', function (e) {
     $('.side-menu__block').addClass('active');
     e.preventDefault();
 });
@@ -66,24 +92,28 @@ if ($('.wow').length) {
     });
     wow.init();
 }
+
 /*-----------------Elements Animation-----------------*/
 
 function prealoader() { // makes sure the whole site is loaded
-    if($('.preloader').length){
+    if ($('.preloader').length) {
         $('.preloader').delay(200).fadeOut(500);
     }
 }
+
 /*-----------------Odometer JS-----------------*/
 function odometer() {
-    $('.odometer').appear(function(e) {
+    $('.odometer').appear(function (e) {
         var odo = $(".odometer");
-        odo.each(function() {
+        odo.each(function () {
             var countNumber = $(this).attr("data-count");
             $(this).html(countNumber);
         });
     });
 }
+
 /*-----------------Odometer JS-----------------*/
+
 /*-----------------selectdropdown-----------------*/
 function selectdropdown() {
     $("#location").selectmenu();
@@ -116,36 +146,34 @@ function scrollnav() {
 }
 
 
-
 function dataTable1() {
     if ($('#outbreaks').length) {
-    $('#outbreaks').dataTable( {
-      "pageLength": 25
-    } );
+        $('#outbreaks').dataTable({
+            "pageLength": 25
+        });
+    }
 }
+
+function dataTable2() {
+    if ($('#outbreakstwo').length) {
+        $('#outbreakstwo').dataTable({
+            "pageLength": 25
+        });
     }
-    function dataTable2() {
-        if ($('#outbreakstwo').length) {
-    $('#outbreakstwo').dataTable( {
-        "pageLength": 25
-      } );
+}
+
+function dataTable3() {
+    if ($('#outbreaksthree').length) {
+        $('#outbreaksthree').dataTable({
+            "pageLength": 25
+        });
     }
-    }
-    function dataTable3() {
-        if ($('#outbreaksthree').length) {
-      $('#outbreaksthree').dataTable( {
-        "pageLength": 25
-      } );
-    }
-    }
+}
 
 
+$(function () {
 
-
-
-$(function() {
-
-    $(".progress").each(function() {
+    $(".progress").each(function () {
 
         var value = $(this).attr('data-value');
         var left = $(this).find('.progress-left .progress-bar');
@@ -188,7 +216,7 @@ function customcursoroverlay() {
 
         TweenMax.to({}, 0.016, {
             repeat: -1,
-            onRepeat: function() {
+            onRepeat: function () {
                 posX += (mouseX - posX) / 9;
                 posY += (mouseY - posY) / 9;
 
@@ -209,24 +237,24 @@ function customcursoroverlay() {
             }
         });
 
-        $(document).on("mousemove", function(e) {
+        $(document).on("mousemove", function (e) {
             var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
             mouseX = e.pageX;
             mouseY = e.pageY - scrollTop;
         });
-        $("button, a").on("mouseenter", function() {
+        $("button, a").on("mouseenter", function () {
             cursor.addClass("active");
             follower.addClass("active");
         });
-        $("button, a").on("mouseleave", function() {
+        $("button, a").on("mouseleave", function () {
             cursor.removeClass("active");
             follower.removeClass("active");
         });
-        $(".custom-cursor__overlay").on("mouseenter", function() {
+        $(".custom-cursor__overlay").on("mouseenter", function () {
             cursor.addClass("close-cursor");
             follower.addClass("close-cursor");
         });
-        $(".custom-cursor__overlay").on("mouseleave", function() {
+        $(".custom-cursor__overlay").on("mouseleave", function () {
             cursor.removeClass("close-cursor");
             follower.removeClass("close-cursor");
         });
@@ -237,7 +265,7 @@ function customcursoroverlay() {
 /*-----------------sidemenutoggler-----------------*/
 function sidemenutoggler() {
     if ($('.side-menu__toggler').length) {
-        $('.side-menu__toggler').on('click', function(e) {
+        $('.side-menu__toggler').on('click', function (e) {
             $('.side-menu__block').addClass('active');
             e.preventDefault();
         });
@@ -248,39 +276,38 @@ function sidemenutoggler() {
 function sidemenublockoverlay() {
 
     if ($('.side-menu__block-overlay').length) {
-        $('.side-menu__block-overlay').on('click', function(e) {
+        $('.side-menu__block-overlay').on('click', function (e) {
             $('.side-menu__block').removeClass('active');
             e.preventDefault();
         });
     }
 }
+
 /*-----------------sidemenublockoverlay-----------------*/
 function sidemenuclose() {
 
     if ($('.side_menu_close').length) {
-        $('.side_menu_close').on('click', function(e) {
+        $('.side_menu_close').on('click', function (e) {
             $('.side-menu__block').removeClass('active');
             e.preventDefault();
         });
     }
 }
-
-
 
 
 //Update Header Style and Scroll to Top
 
 function scrolltotop() {
 
-    $(document).ready(function() {
-        $(window).scroll(function() {
+    $(document).ready(function () {
+        $(window).scroll(function () {
             if ($(this).scrollTop() > 100) {
                 $('#scroll').fadeIn();
             } else {
                 $('#scroll').fadeOut();
             }
         });
-        $('#scroll').click(function() {
+        $('#scroll').click(function () {
             $("html, body").animate({
                 scrollTop: 0
             }, 600);
@@ -292,12 +319,11 @@ function scrolltotop() {
 
 scrolltotop();
 
-$(document).ready(function() {
+$(document).ready(function () {
 
     var CurrentUrl = document.URL;
     var CurrentUrlEnd = CurrentUrl.split('/').filter(Boolean).pop();
-    console.log(CurrentUrlEnd);
-    $("#navbarnav .nav_item a").each(function() {
+    $("#navbarnav .nav_item a").each(function () {
         var ThisUrl = $(this).attr('href');
         var ThisUrlEnd = ThisUrl.split('/').filter(Boolean).pop();
 
@@ -309,10 +335,9 @@ $(document).ready(function() {
 });
 
 
-
 /*-----------------Portfolio Tabs-----------------*/
 if ($('.faq_tabs').length) {
-    $('.faq_tabs .faq_tabs_btn .f_tabs_btn').on('click', function(e) {
+    $('.faq_tabs .faq_tabs_btn .f_tabs_btn').on('click', function (e) {
         e.preventDefault();
         var target = $($(this).attr('data-tab'));
 
@@ -329,7 +354,7 @@ if ($('.faq_tabs').length) {
 
 /*-----------------Portfolio Tabs-----------------*/
 if ($('.latest_updates_tabs').length) {
-    $('.latest_updates_tabs .upd_tabs_btn .u_tabs_btn').on('click', function(e) {
+    $('.latest_updates_tabs .upd_tabs_btn .u_tabs_btn').on('click', function (e) {
         e.preventDefault();
         var target = $($(this).attr('data-tab'));
 
@@ -344,12 +369,6 @@ if ($('.latest_updates_tabs').length) {
     });
 }
 /*-----------------Portfolio Tabs-----------------*/
-
-
-
-
-
-
 
 
 /*--------------one_items------------------*/
@@ -458,7 +477,6 @@ function six_items() {
 }
 
 
-
 /*--------------three_items_center------------------*/
 function threeitemscenter() {
     if ($('.three_items_center').length) {
@@ -492,6 +510,7 @@ function threeitemscenter() {
         });
     }
 }
+
 /*--------------three_items------------------*/
 function threeitems() {
     if ($('.three_items').length) {
@@ -526,7 +545,6 @@ function threeitems() {
 }
 
 
-
 /*--------------two_items------------------*/
 function twoitems() {
     if ($('.two_items').length) {
@@ -559,6 +577,7 @@ function twoitems() {
         });
     }
 }
+
 /*--------------one_items------------------*/
 function oneitems() {
     if ($('.one_items').length) {
@@ -594,8 +613,8 @@ function oneitems() {
 
 
 // Dom Ready Function
-jQuery(document).on('ready', function() {
-    (function($) {
+jQuery(document).on('ready', function () {
+    (function ($) {
         oneitems();
         scrollnav();
         twoitems();
@@ -619,8 +638,8 @@ jQuery(document).on('ready', function() {
    When document is Scrollig, do
    ========================================================================== */
 // Instance Of Fuction while Window Load event
-jQuery(window).on('load', function() {
-    (function($) {
+jQuery(window).on('load', function () {
+    (function ($) {
         prealoader();
     })(jQuery);
 });

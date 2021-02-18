@@ -4,77 +4,83 @@
 <html lang="en">
 
 <head>
-   <meta charset="utf-8">
-   <!-- Responsive -->
-   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-   <title>DCNA: Differential Co-Expression Network Analyze</title>
-   <link rel="stylesheet" type="text/css" href="{% static 'assets/css/bootstrap.min.css' %}">
-   <link rel="stylesheet" type="text/css" href="{% static 'assets/css/dataTables.bootstrap4.min.css' %}">
-   <link rel="stylesheet" type="text/css" href="{% static 'assets/css/style.css' %}">
-   <link rel="stylesheet" type="text/css" href="{% static 'assets/css/custom.css' %}">
-<link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
+    <meta charset="utf-8">
+    <!-- Responsive -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title>dcNA: Differential Co-Expression Network Analyze</title>
+    <link rel="shortcut icon" href="{% static 'assets/image/favicon.ico' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'assets/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'assets/css/dataTables.bootstrap4.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'assets/css/style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'assets/css/custom.css' %}">
+    <link rel="stylesheet"
+          href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
 
 </head>
-<body class="scroll_bar_style_one">
-   <div class="page_wapper">
-      <!--page_wapper-->
+<body class="">
+<div class="page_wapper">
+    <!--page_wapper-->
 
 
-      <!--Start Preloader-->
-      <div class="preloader">
-         <div class="preloader_box">
+    <!--Start Preloader-->
+    <div class="preloader">
+        <div class="preloader_box">
             <div class="loader">
 
-               <div class="spinner-border img-fluid" style="width: 3rem; height: 3rem; margin-bottom: 15px;" role="status"></div>
-            <p>please wait...</p>
-            <div class="pulse"></div>
+                <div class="spinner-border img-fluid text-success"
+                     style="width: 4rem; height: 4rem; margin-bottom: 15px;" role="status"></div>
+
+
+                <p class="wait">please wait...</p>
+                <div class="pulse"></div>
 
 
             </div>
-         </div>
-      </div>
-      <!--End Preloader-->
+        </div>
+    </div>
+    <!--End Preloader-->
 
 
-      <!--Header-->
-      <header class="header_v1">
-         <!--Header-v1--->
-         <section class="navbar_outer">
+    <!--Header-->
+    <header class="header_v1">
+        <!--Header-v1--->
+        <section class="navbar_outer">
             <div class="navbar navbar-expand-lg  bsnav bsnav-sticky bsnav-sticky-slide">
-               <div class="container">
-                  <a class="navbar-brand" href="/"><img src="{% static "assets/image/logo.png" %}" class="logo" alt="img"></a>
-                  <button class="navbar-toggler toggler-spring"><span class="navbar-toggler-icon"></span></button>
-                  <div class="collapse navbar-collapse scroll-nav">
-                     <ul class="navbar-nav navbar-mobile navbar_left  ml-auto" id="navbarnav">
+                <div class="container  pt-4">
+                    <a class="navbar-brand" href="/"><img src="{% static "assets/image/logo2.png" %}" class="logo"
+                                                          alt="img"></a>
+                    <button class="navbar-toggler toggler-spring"><span class="navbar-toggler-icon"></span></button>
+                    <div class="collapse navbar-collapse scroll-nav">
+                        <ul class="navbar-nav navbar-mobile navbar_left  ml-auto" id="navbarnav">
 
-                        <li class="nav-item home  nav_item drop_down">
-                           <a class="nav-link link_hd" href="/"> <i class="linearicons-home4 home_icon"></i> Homepage </a>
-                        </li>
-<!--
-                        <li class="nav-item home  nav_item drop_down">
-                           <a class="nav-link link_hd" href="/database"> <i class="fas fa-database"></i> Database </a>
-                        </li>
--->
-                        <li class="nav-item home  nav_item drop_down">
-                           <a class="nav-link link_hd " href="/about"> <i class="fas fa-info-circle"></i> About Tool </a>
-                        </li>
+                            <li class="nav-item home  nav_item drop_down">
+                                <a class="nav-link link_hd" href="/"> <i class="linearicons-home4 home_icon"></i>
+                                    Homepage </a>
+                            </li>
+                            <li class="nav-item home  nav_item drop_down">
+                                <a class="nav-link link_hd " href="/database"> <i class="fas fa-database"></i> Database
+                                </a>
+                            </li>
+
+                            <li class="nav-item home  nav_item drop_down">
+                                <a class="nav-link link_hd " href="/about"> <i class="fas fa-info-circle"></i> About
+                                    Tool </a>
+                            </li>
 
 
-                     </ul>
-                     <ul class="navbar-nav navbar-mobile navbar_right">
+                            <li><a class="nav-link link_hd about_tool_link" href="#"> <i class="fas fa-calendar"></i>
+                                Contact</a></li>
+                        </ul>
 
-                        <li><a class="theme_btn tp_two about_tool_link" href="#"><span class="linearicons-calendar-text icon"></span>Contact</a></li>
-                     </ul>
-                  </div>
+                    </div>
 
-               </div>
+                </div>
             </div>
             <!--Header-v1-end-->
-         </section>
-      </header>
-      <!--Header-->
+        </section>
+    </header>
+    <!--Header-->
 
 
 

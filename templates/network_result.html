@@ -3,7 +3,10 @@
 {% load humanize %}
 
 
-<main class="main-content">
+<main class="main-content"  >
+
+   <section style="background:url('{% static "assets/image/bg.jpg" %}')">
+
     <!------main-content------>
     <!-----------page_title--------------->
     <section class="page_title small pdt_80  pdb_40">
@@ -24,31 +27,8 @@
     <!-----------page_title-end-------------->
 
 
-    <!-----------handwash--------------->
-    <section class="handwash type_two pdt_50  ">
-        <div class="container">
-
-
-            <div class="row">
-                <!---------row----------->
-                <div class="col-lg-12 col-md-12">
-                    <!---------col----------->
-                    <div class="heading text-center tp_one">
-                        <h2> Differential Co-Expression Network Results</h2>
-                    </div>
-                    <!---------col-end---------->
-                </div>
-                <!----------row-end---------->
-            </div>
-
-
-        </div>
-    </section>
-    <!-----------handwash-end-------------->
-
-
     <!-----------symptoms-checker--------------->
-    <section class="symptoms_checker    pdb_40">
+    <section class="symptoms_checker  pdt_80   ">
         <div class="container">
             <div class="row">
                 <!---------row----------->
@@ -86,13 +66,10 @@
                                     </div>
                                     <div class="col-lg-9">
                                         <div class="patient_details">
-                                            <h2>Your details</h2>
+                                            <h2>Differential Co-Expression Network Results</h2>
                                             <ul>
 
 
-                                                <li> Disease:
-                                                    <span>{{ cancer_ids|get_item:diff_coexp.cancer_id }}</span>
-                                                </li>
                                                 <li> Healthy Sample: <span>{{ diff_coexp.healthy_sample }}</span></li>
                                                 <li>Disease Sample: <span>{{ diff_coexp.disease_sample }}</span></li>
                                                 <br/>
@@ -181,7 +158,7 @@
     </section>
     <!-----------symptoms-checker-end-------------->
 
-
+  </section>
 
     {% for cluster in clusters %}
 
@@ -209,7 +186,7 @@
                                     <div class="gene_list overflow-auto">
 
                                         <ul class="list-group list-group-flush">
-                                            <li class="list-group-item list-group-item-warning">Differential Co-Exp.
+                                            <li class="list-group-item list-group-item-warning">Nodes
                                                 <span
                                                         class="badge badge-primary"
                                                         style="font-size: 13px">{{ cluster.table.gene|length }}</span>
@@ -227,39 +204,15 @@
                                     <div class="gene_list overflow-auto">
 
                                         <ul class="list-group list-group-flush">
-                                            <li class="list-group-item list-group-item-warning">Healthy Interactions
-                                                <span
+                                            <li class="list-group-item list-group-item-warning"> Node Interactions in
+                                                {% if network.type == 0 %} Disease {% else %}
+                                                    Healthy {% endif %} <span
                                                         class="badge badge-primary"
-                                                        style="font-size: 13px">{{ diff_coexp.healthy_diff_co_expression|find_cluster_interactions:cluster|length }}</span>
-                                                {% if network.type == 0 %}
-                                                    <span class="badge badge-dark"
-                                                          style="font-size: 13px">Important </span>
-                                                {% endif %}
-                                                </span>
-
-                                            </li>
-
-
-
-                                            {% for key, value in diff_coexp.healthy_diff_co_expression|find_cluster_interactions:cluster %}
-                                                <li class="list-group-item" style="font-size:12px">{{ key }} <i class="las la-angle-double-right"></i> {{ value }}</li>
-                                            {% endfor %}
-
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="col-md-2">
-                                    <div class="gene_list overflow-auto">
-
-                                        <ul class="list-group list-group-flush">
-                                            <li class="list-group-item list-group-item-warning">Disease
-                                                Interactions<span
-                                                        class="badge badge-primary"
-                                                        style="font-size: 13px">{{ diff_coexp.disease_diff_co_expression|find_cluster_interactions:cluster|length }}
+                                                        style="font-size: 13px">{{ cluster.interactions|length }}
                                                 </span>
                                                 {% if network.type == 1 %}
                                                     <span class="badge badge-dark"
-                                                          style="font-size: 13px">Important </span>
+                                                          style="font-size: 13px;margin-top:5px">! </span>
                                                 {% endif %}
 
 
@@ -267,11 +220,40 @@
 
 
 
-                                            {% for key , value in diff_coexp.disease_diff_co_expression|find_cluster_interactions:cluster %}
-                                                <li class="list-group-item" style="font-size:12px">{{ key }} <i class="las la-angle-double-right"></i> {{ value }}</li>
+                                            {% for key, value in cluster.interactions %}
+                                                <li class="list-group-item" style="font-size:12px">{{ key }}
+                                                    [{{ value }}]
+                                                </li>
                                             {% endfor %}
+                                        </ul>
+
+                                    </div>
+                                </div>
 
 
+                                <div class="col-md-2">
+                                    <div class="gene_list overflow-auto">
+
+
+                                        <ul class="list-group list-group-flush">
+                                            <li class="list-group-item list-group-item-warning"> Node Interactions in
+                                                {% if network.type == 0 %} Healthy {% else %}
+                                                    Disease {% endif %}
+                                                <span
+                                                        class="badge badge-primary"
+                                                        style="font-size: 13px">{{ cluster.opposite_interactions|length }}</span>
+                                                {% if network.type == 0 %}
+                                                    <span class="badge badge-dark"
+                                                          style="font-size: 13px">! </span>
+                                                {% endif %}
+                                                </span>
+                                            </li>
+
+                                            {% for key, value in cluster.opposite_interactions %}
+                                                <li class="list-group-item" style="font-size:12px">{{ key }}
+                                                    [{{ value }}]
+                                                </li>
+                                            {% endfor %}
                                         </ul>
                                     </div>
                                 </div>

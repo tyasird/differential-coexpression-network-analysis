@@ -14,3 +14,11 @@ def cancer_ids():
         10: 'Thyroid Cancer',
         11: 'Gastric Cancer',
     }
+
+
+
+
+
+
+
+

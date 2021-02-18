@@ -28,7 +28,10 @@ class DiffCoExpression(models.Model):
 
 class Network(models.Model):
 
-    diff_coexp_id = models.IntegerField(blank=True, null=True)
+
+    diff_coexp = models.ForeignKey(DiffCoExpression,null=True,on_delete=models.CASCADE)
+
+    #diff_coexp_id = models.IntegerField(blank=True)
     type = models.IntegerField(blank=True,null=True) #0 Disease
     mcode = models.JSONField(blank=True, null=True)
     timestamp = models.DateField(default=timezone.now,blank=True, null=True)

@@ -1,7 +1,8 @@
 /*---------============the cov style==========----------*/
 
-@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;0,600;0,700;0,900;1,800&amp;display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;500;600;700;800;900&amp;display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700&display=swap');
+
 
 /*-----navbar-default-style----*/
 @media(max-width:992px){.navbar .container{
@@ -314,15 +315,15 @@ margin-right: auto;
 
 .navbar-expand-lg .navbar-nav .nav-link,
 .navbar-nav .nav-link {
-    color: #274782;
+    color: #000;
     padding: 26px 15px;
     display: block;
-    font-family: 'Nunito', sans-serif;
+    font-family: 'Inter', sans-serif;
     position: relative;
     transition: .3s;
     font-size: 16px;
     cursor: pointer;
-    font-weight: 700;
+    font-weight: 500;
 
 } .navbar-nav .nav-link  .home_icon{
     font-weight: 600;
